@@ -1,74 +1,68 @@
+[class*='grid-'] {
+  float: left;
+}
 
-  
-  /* items */
-  .container > * {
-    color: #353535;
-    font-size: 1.2em;
-    /* line-height: 1.5; */
-    padding: 20px;
-    background: #d0cfc5;
+.grid-main {
+  width: 66.66%;
+}
+
+.grid-side {
+  width: 33.33%;
+}
+
+.grid:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+[class*='grid-'] {
+  padding-right: 20px;
+}
+
+[class*='grid-']:last-of-type {
+  padding-right: 0;
+}
+
+.sideOpen{
+  display: none;
+}
+
+
+@media only screen and (max-width: 599px){
+  .grid-main {
+    width: 100%;
   }
-  
-  /* nav styles */
-  .container nav {
-    background: #136fd2;
+  .grid-side{
+    transition: transform .3s ease-in-out;
+    top: 0;
+    bottom: 0;   
+    min-height: 100vh; /* override Safari bug */
+    position: absolute; /* or choose `absolute` depending on desired behavior*/
+    width: 300px;
+    left: -340px;
+    background-color: blue;
   }
-  
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  .sideOpen{
+    display: block;
   }
-  
-  nav a {
-    color: #d0cfc5
+
+  #gridside:target {     
+    transform: translateX(340px);
   }
-  
-  nav a:hover {
+
+  .close {
+    text-align: right;
+    display: block;
     text-decoration: none;
+    font-size: 3em;
+    position: relative;
+    top: -30px;
   }
-  
-  /* media query for grid layout */
-  @media only screen and (min-width: 600px) {
-      
-    
-    /* nav styles */
-    nav ul li {
-      display: inline-block;
-      padding: 0 20px 0 0;
-    }
-    
-    /* hide toggle */
-    .toggle {
-      display: none;
-    }
-    
-  }
-  
-  /* media query for nav styles */
-  @media only screen and (max-width: 599px) {
-    
-      #nav {
-        transition: transform .3s ease-in-out;
-        top: 0;
-        bottom: 0;   
-        min-height: 100vh; /* override Safari bug */
-        position: absolute; /* or choose `absolute` depending on desired behavior*/
-        width: 300px;
-        left: -340px;
-      }
-    
-      #nav:target {     
-        transform: translateX(340px);
-      }
-    
-      .close {
-        text-align: right;
-        display: block;
-        text-decoration: none;
-        font-size: 3em;
-        position: relative;
-        top: -30px;
-      }
-    
-  }
+}
